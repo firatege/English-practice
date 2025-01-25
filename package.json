@@ -1,11 +1,21 @@
 {
   "name": "english-practice",
-  "module": "index.ts",
+  "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/dotenv": "^8.2.3",
+    "@xata.io/client": "^0.0.0-next.va121e4207b94bfe0a3c025fc00b247b923880930",
+    "ts-postgres": "^2.0.4"
+  },
+  "scripts": {
+    "start": "node src/index.ts",
+    "dev": "ts-node src/index.ts",
+    "test": "jest"
   }
 }
