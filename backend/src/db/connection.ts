@@ -1,6 +1,8 @@
 import { connect } from 'ts-postgres'
-import { config } from 'dotenv'
-config()
+import * as dotenv from 'dotenv';
+import path from 'path';
+
+dotenv.config();
 
 async function main() {
     const client = await connect({
@@ -20,5 +22,16 @@ async function main() {
         console.error('Error:', error instanceof Error ? error.message : error)
     }
 }
+
+async function test() {
+    try {
+        await main()
+    }
+    catch (error) {
+        console.error('Error in test:', error instanceof Error ? error.message : error)
+    }
+}
+
+test()
 
 export default main
