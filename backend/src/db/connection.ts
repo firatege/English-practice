@@ -21,6 +21,7 @@ async function main() {
     catch (error) {
         console.error('Error:', error instanceof Error ? error.message : error)
     }
+    return client
 }
 
 async function test() {

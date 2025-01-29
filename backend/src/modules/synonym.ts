@@ -25,12 +25,13 @@ function getSynonyms(word: string): Promise<string[]> {
             return response.json();
         })
         .then((data) => {
-            return data.synonyms[10];
+            return data.synonyms;
         });
 }
 
 function test() {
-    const word = "fix";
+    const word = "accost";
+    console.log("Word:", word);
     getSynonyms(word)
         .then((synonyms) => {
             console.log("Synonyms:", synonyms);
@@ -39,3 +40,5 @@ function test() {
             console.error('Error in test:', error instanceof Error ? error.message : error);
         });
 }
+
+test()
