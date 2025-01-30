@@ -14,7 +14,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 async function generateAIResponse(prompt: string) {
     const model = genAI.getGenerativeModel({
         model: "gemini-1.5-flash",
-        systemInstruction: " give 50 words about the user prompt with json format. Just words ",
+        systemInstruction: "Give 50 words about the user prompt in JSON format. Just words.",
     });
 
     const result = await model.generateContent({
@@ -34,21 +34,24 @@ async function generateAIResponse(prompt: string) {
         }
     });
 
-    return result.response.text();
+    const words = result.response.text().split(/\s+/).filter(word => word.length > 0);
+    return {
+        prompt: prompt,
+        words: words
+    };
 }
 
-export async function main(prompt: string | undefined ) {
+export async function main_ai(prompt: string | undefined) {
     if (!prompt) {
         throw new Error('Prompt is not defined');
     }
     try {
         const response = await generateAIResponse(prompt);
-        console.log(response);
+        console.log(JSON.stringify(response, null, 2));
     } catch (error) {
         console.error('Error generating AI response:', error instanceof Error ? error.message : error);
     }
+    return prompt;
 }
 
-
-export default main;
-
+export default main_ai;

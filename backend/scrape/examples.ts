@@ -35,7 +35,7 @@ async function fetchMovieQuotes(word: string): Promise<MovieQuote[]> {
     }
 }
 
-async function main() {
+export async  function main_examples() {
     const word = "hallow";
     try {
         const movieQuotes = await fetchMovieQuotes(word);
@@ -46,5 +46,5 @@ async function main() {
     }
 }
 
-// Run the main function
-main();
+
+export default main_examples;

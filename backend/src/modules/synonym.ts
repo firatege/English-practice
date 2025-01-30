@@ -30,7 +30,7 @@ function getSynonyms(word: string): Promise<string[]> {
 }
 
 function test() {
-    const word = "accost";
+    const word = "amazing";
     console.log("Word:", word);
     getSynonyms(word)
         .then((synonyms) => {
